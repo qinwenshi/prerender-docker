@@ -5,6 +5,7 @@ const stripHtml = require('./plugins/stripHtml');
 const healthcheck = require('./plugins/healthcheck');
 const removePrefetchTags = require('./plugins/removePrefetchTags');
 const log = require('./plugins/log');
+const consoleDebugger = require('./plugins/consoleDebugger');
 
 const options = {
 	pageDoneCheckInterval : 500,
@@ -24,7 +25,7 @@ server.use(prerender.removeScriptTags());
 server.use(removePrefetchTags);
 server.use(prerender.httpHeaders());
 if (process.env.DEBUG_PAGES) {
-	server.use(prerender.logger());
+	server.use(consoleDebugger);
 }
 server.use(stripHtml);
 
