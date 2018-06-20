@@ -8,9 +8,9 @@ const log = require('./plugins/log');
 const consoleDebugger = require('./plugins/consoleDebugger');
 
 const options = {
-	pageDoneCheckInterval : 500,
-	pageLoadTimeout: 20000,
-	waitAfterLastRequest: 250,
+	pageDoneCheckInterval: process.env.PAGE_DONE_CHECK_INTERVAL || 500,
+	pageLoadTimeout: process.env.PAGE_LOAD_TIMEOUT || 20000,
+	waitAfterLastRequest: process.env.WAIT_AFTER_LAST_REQUEST || 250,
 	chromeFlags: [ '--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222', '--hide-scrollbars' ],
 };
 console.log('Starting with options:', options);
