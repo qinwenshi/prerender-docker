@@ -1,6 +1,7 @@
 // Set all blacklisted headers as lowercase
 const BLACKLISTED = [
 	'user-agent',       // Prerender sets her own user agent, which we dont want to override
+	'host',             // This is set to the host of prerender, so its wrong to forward
 	'accept',           // Let prerender accept everything and handle it
 	'accept-encoding',  // We dont want to forward deflate or gzip since prerender will break on those
 	'connection',       // No sudden keepalive stuff
@@ -20,6 +21,7 @@ module.exports = {
 			newHeader[headerKey] = BLACKLISTED.includes(headerKey) ? '' : header[1];
 			return newHeader;
 		})
+		        .filter(header => header[1] == '')
 			.reduce((a, b) => Object.assign(a, b), {});
 
 		const headersObject = {
