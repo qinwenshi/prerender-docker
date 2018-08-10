@@ -21,6 +21,7 @@ module.exports = {
 			newHeader[headerKey] = BLACKLISTED.includes(headerKey) ? '' : header[1];
 			return newHeader;
 		})
+		        .filter(header => header[1] == '')
 			.reduce((a, b) => Object.assign(a, b), {});
 
 		const headersObject = {
