@@ -8,6 +8,7 @@ const log = require('./plugins/log');
 const consoleDebugger = require('./plugins/consoleDebugger');
 
 const options = {
+	chromeLocation: '/usr/bin/chromium-browser',
 	pageDoneCheckInterval: process.env.PAGE_DONE_CHECK_INTERVAL || 500,
 	pageLoadTimeout: process.env.PAGE_LOAD_TIMEOUT || 20000,
 	waitAfterLastRequest: process.env.WAIT_AFTER_LAST_REQUEST || 250,
