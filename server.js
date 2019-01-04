@@ -16,7 +16,7 @@ const options = {
 console.log('Starting with options:', options);
 
 const server = prerender(options);
-
+server.use(require('prerender-filesystem-cache'));
 server.use(log);
 server.use(healthcheck('_health'));
 server.use(forwardHeaders);
